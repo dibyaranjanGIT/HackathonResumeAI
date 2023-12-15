@@ -1,0 +1,19 @@
+LangChain is a Python library designed to facilitate the development of applications that utilize large language models
+like those provided by OpenAI
+
+Chain-of-Thought Reasoning: One of the primary focuses of LangChain is to support chain-of-thought reasoning.
+It can help in constructing prompts that guide language models to reason through problems step by step, leading to more accurate and explainable answers.
+
+ssh -i resume_ec2_key.pem ec2-user@ec2-54-157-237-143.compute-1.amazonaws.com
+
+scp -i resume_ec2_key.pem requirements.txt ec2-user@54.157.237.143:/apps/my-data/apps/volume/new-volume/resume_app
+
+cd resume_app
+
+python3 -m venv myenv
+
+pip3 install --target=/apps/my-data/apps/volume/new-volume/resume_app -r requirements.txt
+
+
+
+

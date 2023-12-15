@@ -1,0 +1,35 @@
+/* Overall page styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #d0f0c0; /* Light green background */
+    font-family: Arial, sans-serif;
+}
+
+/* Styling the form */
+form {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff; /* White background for the form */
+    border-radius: 8px;
+}
+
+/* Styling the file input and submit button */
+input[type="file"],
+input[type="submit"] {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Hover effect for buttons */
+input[type="submit"]:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
