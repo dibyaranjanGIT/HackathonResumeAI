@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import pymongo
 from dotenv import load_dotenv
@@ -47,21 +48,25 @@ def call_llm_chain(texts):
     query = "What is the total experience of the candidate"
     docs = document_search.similarity_search(query)
     experience = chain.run(input_documents=docs, question=query)
-    print(experience)
+    # Extracting only the integer part
+    integer_part = re.findall(r'\d+', experience)
+    integer_part = integer_part[0] if integer_part else None
+    print(integer_part)
 
-    query = "What is the name of the candidate"
+    query = "What is the name of the candidate need answer only"
     docs = document_search.similarity_search(query)
-    name = chain.run(input_documents=docs, question=query)
+    input_name = chain.run(input_documents=docs, question=query)
+    name = input_name.replace("The candidate is ", "")
     print(name)
 
-    query = "What is the primary skill set of the candidate"
+    query = "What is the primary skill set of the candidate need answer only"
     docs = document_search.similarity_search(query)
     skill_set = chain.run(input_documents=docs, question=query)
     print(skill_set)
 
     my_dict = {
         "name": name,
-        "experience": experience,
+        "experience": integer_part,
         "skill_set": skill_set
     }
     return my_dict
@@ -102,4 +107,5 @@ def main(pdf_file):
 
 
 if __name__ == '__main__':
-    main()
+    pdf_file = '../Data/Uma.pdf'
+    main(pdf_file)
