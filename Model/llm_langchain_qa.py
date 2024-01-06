@@ -51,21 +51,18 @@ def call_llm_chain(texts):
     # Extracting only the integer part
     integer_part = re.findall(r'\d+', experience)
     integer_part = integer_part[0] if integer_part else None
-    print(integer_part)
 
-    query = "What is the name of the candidate need answer only"
+    query = "Directly provide the candidate's name from the resume, without any additional text."
     docs = document_search.similarity_search(query)
     input_name = chain.run(input_documents=docs, question=query)
-    name = input_name.replace("The candidate is ", "")
-    print(name)
+    # name = input_name.replace("The candidate is ", "")
 
-    query = "What is the primary skill set of the candidate need answer only"
+    query = "List only the primary skill set of the candidate, without additional explanation or context."
     docs = document_search.similarity_search(query)
     skill_set = chain.run(input_documents=docs, question=query)
-    print(skill_set)
 
     my_dict = {
-        "name": name,
+        "name": input_name,
         "experience": integer_part,
         "skill_set": skill_set
     }
@@ -107,5 +104,5 @@ def main(pdf_file):
 
 
 if __name__ == '__main__':
-    pdf_file = '../Data/Uma.pdf'
+    pdf_file = '../Data/DibyaranjanDE.pdf'
     main(pdf_file)
